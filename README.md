@@ -97,7 +97,7 @@ This project is licensed under the MIT License.
 
 ## 🔗 Links
 
-- [Live Demo](Not available yet)
+- [Live Demo](https://epitre-p23ird2oa-barret-pierres-projects.vercel.app/)
 - [Report Bug](https://github.com/Missive-Project/epitre/issues)
 - [Request Feature](https://github.com/Missive-Project/epitre/issues)
 
