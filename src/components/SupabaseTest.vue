@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { supabase } from "../config/supabase.config.ts";
+import { supabase } from "../configs/supabaseConfig.ts";
 
 const loading = ref(true);
 const isConnected = ref(false);
