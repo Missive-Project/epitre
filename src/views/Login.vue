@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Button } from "@/components/ui/button";
+
 import { useSignInWithGoogle } from "../composables/useAuth";
 
 const { mutate: signIn, isPending, error } = useSignInWithGoogle();
@@ -9,6 +11,8 @@ const { mutate: signIn, isPending, error } = useSignInWithGoogle();
     <div class="login-card">
       <h1>Bienvenue sur Epitre</h1>
       <p class="subtitle">Connectez-vous pour continuer</p>
+
+      <Button>Click me</Button>
 
       <button :disabled="isPending" class="google-button" @click="signIn()">
         <svg v-if="!isPending" width="18" height="18" viewBox="0 0 18 18">
