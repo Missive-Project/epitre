@@ -10,7 +10,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/login",
     name: "Login",
-    component: () => import("../views/LoginTest.vue"),
+    component: () => import("../views/Login.vue"),
     meta: { requiresGuest: true },
   },
   {
