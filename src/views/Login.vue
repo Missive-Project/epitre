@@ -13,7 +13,7 @@ import LoginForm from "@/components/login/LoginForm.vue";
     </div>
     <div class="bg-muted relative hidden lg:block">
       <img
-        src="/src/assets/placeholder.svg"
+        src="/src/assets/mushroom.webp"
         alt="Image"
         class="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
       />
