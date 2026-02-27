@@ -15,17 +15,21 @@ import NavMain from "./NavMain.vue";
 import SidebarMenu from "./ui/sidebar/SidebarMenu.vue";
 import SidebarMenuItem from "./ui/sidebar/SidebarMenuItem.vue";
 import SidebarMenuButton from "./ui/sidebar/SidebarMenuButton.vue";
+import type { UserMetadata } from "@/types/userTypes";
 
-const props = withDefaults(defineProps<SidebarProps>(), {
-  collapsible: "icon",
-});
+const props = withDefaults(
+  defineProps<
+    SidebarProps & {
+      userMetadata: UserMetadata;
+      onLogout: () => void;
+    }
+  >(),
+  {
+    collapsible: "icon",
+  },
+);
 
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   navMain: [
     {
       title: "Accueil",
@@ -68,7 +72,10 @@ const data = {
       <NavMain :items="data.navMain" />
     </SidebarContent>
     <SidebarFooter>
-      <NavUser :user="data.user" />
+      <NavUser
+        :user-metadata="props.userMetadata"
+        :on-logout="props.onLogout"
+      />
     </SidebarFooter>
     <SidebarRail />
   </Sidebar>
