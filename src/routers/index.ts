@@ -15,14 +15,20 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: "/dashboard",
-    name: "Dashboard",
-    component: () => import("../views/Dashboard.vue"),
+    component: () => import("../layouts/DashboardLayout.vue"),
     meta: { requiresAuth: true },
-  },
-  {
-    path: "/",
-    name: "GsapTest",
-    component: () => import("../views/GsapTest.vue"),
+    children: [
+      {
+        path: "",
+        name: "DashboardHome",
+        component: () => import("../views/Home.vue"),
+      },
+      {
+        path: "cartes",
+        name: "DashboardCartes",
+        component: () => import("../views/Cards.vue"),
+      },
+    ],
   },
 ];
 

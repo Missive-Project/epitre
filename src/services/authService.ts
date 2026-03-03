@@ -36,24 +36,17 @@ export const authService = {
   },
 
   async getUserMetadata(): Promise<UserMetadata> {
-    const { data, error } = await supabaseClient.auth.getSession();
+    const { data, error } = await supabaseClient.auth.getUser();
 
     if (error) {
-      throw new Error(`Get session error: ${error.message}`);
+      throw new Error(`Get user error: ${error.message}`);
     }
 
-    if (!data.session || !data.session.user) {
-      throw new Error("No active session found");
+    if (!data.user) {
+      throw new Error("No active user information found");
     }
 
-    if (data.session) {
-      tokenService.saveTokens(
-        data.session.access_token,
-        data.session.refresh_token,
-      );
-    }
-
-    const userMetadataDTO = data.session.user.user_metadata as UserMetadataDTO;
+    const userMetadataDTO = data.user.user_metadata as UserMetadataDTO;
 
     return userMapper.toUserMetadata(userMetadataDTO);
   },

@@ -16,6 +16,7 @@ import SidebarMenu from "./ui/sidebar/SidebarMenu.vue";
 import SidebarMenuItem from "./ui/sidebar/SidebarMenuItem.vue";
 import SidebarMenuButton from "./ui/sidebar/SidebarMenuButton.vue";
 import type { UserMetadata } from "@/types/userTypes";
+import { useRoute } from "vue-router";
 
 const props = withDefaults(
   defineProps<
@@ -29,19 +30,21 @@ const props = withDefaults(
   },
 );
 
+const route = useRoute();
+
 const data = {
   navMain: [
     {
       title: "Accueil",
-      url: "#",
+      url: "/dashboard",
       icon: House,
-      isActive: false,
+      isActive: route.path === "/dashboard",
     },
     {
       title: "Cartes",
-      url: "#",
+      url: "/dashboard/cartes",
       icon: WalletCards,
-      isActive: true,
+      isActive: route.path.includes("/dashboard/cartes"),
     },
   ],
 };
