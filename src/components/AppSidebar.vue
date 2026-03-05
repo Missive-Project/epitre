@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import type { SidebarProps } from "@/components/ui/sidebar";
-
-import { House, WalletCards } from "lucide-vue-next";
 import NavUser from "@/components/NavUser.vue";
-
 import {
   Sidebar,
   SidebarContent,
@@ -16,7 +13,7 @@ import SidebarMenu from "./ui/sidebar/SidebarMenu.vue";
 import SidebarMenuItem from "./ui/sidebar/SidebarMenuItem.vue";
 import SidebarMenuButton from "./ui/sidebar/SidebarMenuButton.vue";
 import type { UserMetadata } from "@/types/userTypes";
-import { useRoute } from "vue-router";
+import { useNavigation } from "@/composables/useNavigation";
 
 const props = withDefaults(
   defineProps<
@@ -30,24 +27,7 @@ const props = withDefaults(
   },
 );
 
-const route = useRoute();
-
-const data = {
-  navMain: [
-    {
-      title: "Accueil",
-      url: "/dashboard",
-      icon: House,
-      isActive: route.path === "/dashboard",
-    },
-    {
-      title: "Cartes",
-      url: "/dashboard/cartes",
-      icon: WalletCards,
-      isActive: route.path.includes("/dashboard/cartes"),
-    },
-  ],
-};
+const { navItems } = useNavigation();
 </script>
 
 <template>
@@ -72,7 +52,7 @@ const data = {
       </SidebarMenu>
     </SidebarHeader>
     <SidebarContent>
-      <NavMain :items="data.navMain" />
+      <NavMain :items="navItems" />
     </SidebarContent>
     <SidebarFooter>
       <NavUser

@@ -15,26 +15,11 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { useSignOut, useUserMetadata } from "@/composables/useAuth";
-import { computed } from "vue";
-import { useRouter } from "vue-router";
+import { useBreadcrumbs } from "@/composables/useBreadcrumbs";
 
 const { data: userMetadata, isLoading } = useUserMetadata();
 const { mutate: signOut } = useSignOut();
-const router = useRouter();
-
-const breadcrumbs = computed(() => {
-  const route = router.currentRoute.value;
-  const items = [];
-
-  if (route.path.includes("/dashboard/cartes")) {
-    items.push({ label: "Dashboard", href: "/dashboard" });
-    items.push({ label: "Cartes", isCurrent: true });
-  } else if (route.path === "/dashboard") {
-    items.push({ label: "Accueil", isCurrent: true });
-  }
-
-  return items;
-});
+const { breadcrumbs } = useBreadcrumbs();
 </script>
 
 <template>

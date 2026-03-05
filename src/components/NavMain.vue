@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import type { LucideIcon } from "lucide-vue-next";
-
+import type { Component } from "vue";
 import {
   SidebarMenu,
   SidebarMenuButton,
@@ -11,8 +10,8 @@ import SidebarGroup from "./ui/sidebar/SidebarGroup.vue";
 defineProps<{
   items: {
     title: string;
-    url: string;
-    icon: LucideIcon;
+    path: string;
+    icon: Component;
     isActive?: boolean;
   }[];
 }>();
@@ -23,7 +22,7 @@ defineProps<{
     <SidebarMenu>
       <SidebarMenuItem v-for="item in items" :key="item.title">
         <SidebarMenuButton as-child :is-active="item.isActive">
-          <router-link :to="item.url">
+          <router-link :to="item.path">
             <component :is="item.icon" />
             <span>{{ item.title }}</span>
           </router-link>
