@@ -15,3 +15,5 @@ export interface BreadcrumbItem {
   href?: string;
   isCurrent?: boolean;
 }
+
+export type BreadcrumbItems = BreadcrumbItem[];

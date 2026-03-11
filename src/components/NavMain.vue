@@ -2,10 +2,10 @@
 import type { Component } from "vue";
 import {
   SidebarMenu,
+  SidebarGroup,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import SidebarGroup from "./ui/sidebar/SidebarGroup.vue";
 
 defineProps<{
   items: {

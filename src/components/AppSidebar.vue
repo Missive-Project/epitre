@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import type { SidebarProps } from "@/components/ui/sidebar";
 import NavUser from "@/components/NavUser.vue";
+import NavMain from "@/components/NavMain.vue";
 import {
   Sidebar,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import NavMain from "./NavMain.vue";
-import SidebarMenu from "./ui/sidebar/SidebarMenu.vue";
-import SidebarMenuItem from "./ui/sidebar/SidebarMenuItem.vue";
-import SidebarMenuButton from "./ui/sidebar/SidebarMenuButton.vue";
 import type { UserMetadata } from "@/types/userTypes";
 import { useNavigation } from "@/composables/useNavigation";
 

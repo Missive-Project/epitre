@@ -1,13 +1,6 @@
 <script setup lang="ts">
 import AppSidebar from "@/components/AppSidebar.vue";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import NavBreadCrumb from "@/components/NavBreadCrumb.vue";
 import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
@@ -38,24 +31,7 @@ const { breadcrumbs } = useBreadcrumbs();
             orientation="vertical"
             class="mr-2 data-[orientation=vertical]:h-4"
           />
-          <Breadcrumb>
-            <BreadcrumbList>
-              <template v-for="(item, index) in breadcrumbs" :key="index">
-                <BreadcrumbItem v-if="!item.isCurrent">
-                  <BreadcrumbLink :href="item.href">
-                    {{ item.label }}
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbItem v-else>
-                  <BreadcrumbPage>{{ item.label }}</BreadcrumbPage>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator
-                  v-if="index < breadcrumbs.length - 1"
-                  class="hidden md:block"
-                />
-              </template>
-            </BreadcrumbList>
-          </Breadcrumb>
+          <NavBreadCrumb :breadcrumbs="breadcrumbs" />
         </div>
       </header>
       <main class="flex flex-1 flex-col p-4 pt-0">
@@ -63,7 +39,6 @@ const { breadcrumbs } = useBreadcrumbs();
       </main>
     </SidebarInset>
   </SidebarProvider>
-
   <div v-else class="flex h-screen items-center justify-center">
     <p>Session invalide, redirection...</p>
   </div>
