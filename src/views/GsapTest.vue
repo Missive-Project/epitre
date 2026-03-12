@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { gsap } from "gsap";
-import SupabaseTest from "../components/SupabaseTest.vue";
-import HermesTest from "../components/HermesTest.vue";
 
 const box = ref<HTMLElement | null>(null);
 
@@ -20,8 +18,6 @@ onMounted(() => {
   <div class="container">
     <h1>Test GSAP</h1>
     <div ref="box" class="box">GSAP OK ✓</div>
-    <SupabaseTest />
-    <HermesTest />
   </div>
 </template>
 
