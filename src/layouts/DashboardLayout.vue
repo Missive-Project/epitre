@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AppSidebar from "@/components/AppSidebar.vue";
-import NavBreadCrumb from "@/components/NavBreadCrumb.vue";
+import NavBreadcrumb from "@/components/NavBreadcrumb.vue";
 import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
@@ -31,7 +31,7 @@ const { breadcrumbs } = useBreadcrumbs();
             orientation="vertical"
             class="mr-2 data-[orientation=vertical]:h-4"
           />
-          <NavBreadCrumb :breadcrumbs="breadcrumbs" />
+          <NavBreadcrumb :breadcrumbs="breadcrumbs" />
         </div>
       </header>
       <main class="flex flex-1 flex-col p-4 pt-0">
@@ -39,6 +39,7 @@ const { breadcrumbs } = useBreadcrumbs();
       </main>
     </SidebarInset>
   </SidebarProvider>
+
   <div v-else class="flex h-screen items-center justify-center">
     <p>Session invalide, redirection...</p>
   </div>
