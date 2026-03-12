@@ -10,6 +10,14 @@ export function useSession() {
   });
 }
 
+export function useUserMetadata() {
+  return useQuery({
+    queryKey: ["userMetadata"],
+    queryFn: () => authService.getUserMetadata(),
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
 export function useSignInWithGoogle() {
   return useMutation({
     mutationFn: () => authService.signInWithGoogle(),

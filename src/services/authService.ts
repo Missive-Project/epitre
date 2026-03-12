@@ -1,6 +1,8 @@
 import { supabaseClient } from "../clients/supabaseClient";
 import type { Session } from "@supabase/supabase-js";
 import { tokenService } from "./tokenService";
+import { userMapper } from "@/mappers/userMapper";
+import type { UserMetadata, UserMetadataDTO } from "@/types/userTypes";
 
 export const authService = {
   async signInWithGoogle(): Promise<void> {
@@ -31,6 +33,22 @@ export const authService = {
     }
 
     return data.session;
+  },
+
+  async getUserMetadata(): Promise<UserMetadata> {
+    const { data, error } = await supabaseClient.auth.getUser();
+
+    if (error) {
+      throw new Error(`Get user error: ${error.message}`);
+    }
+
+    if (!data.user) {
+      throw new Error("No active user information found");
+    }
+
+    const userMetadataDTO = data.user.user_metadata as UserMetadataDTO;
+
+    return userMapper.toUserMetadata(userMetadataDTO);
   },
 
   async signOut(): Promise<void> {
